@@ -29,11 +29,12 @@ class TasksController < ApplicationController
     
       format.json {
         if @task.valid?
-          render json: @task, status: :created, location: task_path(@task)
+          render json: { status: :created }
         else
           render json: { status: :unprocessable_entity, error: @task.errors.full_messages.join(', ') }
         end
       }
+    end
   end
 
   def complete
