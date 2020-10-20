@@ -1,0 +1,100 @@
+// Place all the styles related to the Tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.header {
+  background: #6200ed;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.head-inner {
+  display: flex;
+  color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 11px;
+  min-height: 60px;
+}
+
+.header-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+.btn-plus {
+    color: #fff !important;
+    font-size: 30px !important;
+}
+
+.controller-media {
+    display: flex;
+    align-items: center;
+}
+
+.controller-media-body {
+    flex: 1;
+}
+
+input.custom-input {
+  -webkit-appearance: none;
+  position: relative;
+}
+
+input.custom-input:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border: 2px solid #7c7c7c;
+  position: absolute;
+  top: -16px;
+  right: 0;
+}
+
+[type="checkbox"]:checked:after {
+  content: '';
+  position: absolute;
+  right: 6px;
+  top: -13px;
+  width: 7px;
+  height: 12px;
+  border: solid #7c7c7c;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.controller-media-body small {
+  padding-right: 50px;
+  display: block;
+}
+
+
+.add-task .form-control {
+    border: none;
+    border-bottom: 2px solid #6200ed;
+    border-radius: 0;
+}
+
+.form-control:focus {
+	box-shadow: none !important;
+	border-color: #6200ed !important;
+}
+
+.add-task .btn-submit {
+  background: #6200ed;
+  color: #fff;
+  font-size: 14px;
+  padding: 6px 20px;
+}
+
+.mt-50{
+	margin-top: 50px;
+}
+
+.rounded-circle {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
