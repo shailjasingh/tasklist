@@ -3,6 +3,10 @@
 class TasksController < ApplicationController
   def index
     @tasks = Tasks::List.run!(user: current_user)
+    respond_to do |format|
+      format.html
+      format.json { render json: @tasks }
+    end
   end
 
   def new
@@ -11,14 +15,25 @@ class TasksController < ApplicationController
 
   def create
     @task = Tasks::Create.run(task_params.merge(user: current_user))
-
-    if @task.valid?
-      flash[:success] = t('task.messages.success')
-      redirect_to root_path
-    else
-      flash[:danger] = @task.errors.full_messages.join(', ')
-      render 'new'
-    end
+    
+    respond_to do |format|
+      format.html {
+        if @task.valid?
+          flash[:success] = t('task.messages.success')
+          redirect_to root_path
+        else
+          flash[:danger] = @task.errors.full_messages.join(', ')
+          render 'new'
+        end
+      }
+    
+      format.json {
+        if @task.valid?
+          render json: @task, status: :created, location: task_path(@task)
+        else
+          render json: { status: :unprocessable_entity, error: @task.errors.full_messages.join(', ') }
+        end
+      }
   end
 
   def complete
