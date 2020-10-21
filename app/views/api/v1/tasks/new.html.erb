@@ -1,0 +1,34 @@
+<div class="header">
+  <div class="container-fluid">
+    <div class="head-inner">
+      <div class="header-title">
+        <%= t('task.labels.add_task') %>
+      </div>
+    </div>
+  </div>
+</div>
+<% flash.each do |name, msg| %>
+  <div class="alert alert-<%= name %>">
+    <button class="close" data-dismiss="alert">×</button>
+    <%= msg %>
+  </div>
+<% end %>
+<div class="main">
+  <div class="container-fluid">
+    <div class="add-task">
+      <%= form_with scope: :task, url: api_v1_tasks_path, local: true do |f| %>
+        <div class="form-group mt-5">
+          <label><%= t('task.labels.description') %></label>
+          <%= f.text_field :description, class: "form-control" %>
+        </div>
+        <div class="form-group mt-5">
+          <label><%= t('task.labels.url') %></label>
+          <%= f.text_field :avatar_url, class: "form-control" %>
+        </div>
+        <div class="text-center mt-50">
+          <%= f.submit t('task.messages.add'), class: "btn btn-submit" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

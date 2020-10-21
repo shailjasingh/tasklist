@@ -3,7 +3,7 @@ $(document).ready(function() {
     var task = $(this)
     var taskId = $(this).attr('task_id')
     $.ajax({
-      url: '/tasks/' + taskId + '/complete',
+      url: '/api/v1/tasks/' + taskId + '/complete',
       dataType: 'JSON',
       method: 'POST',
       success: function(data) {

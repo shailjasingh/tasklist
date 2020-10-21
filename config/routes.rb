@@ -2,9 +2,12 @@
 
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :tasks, only: %i[index new create] do
-    post :complete
-  end
-
-  root to: 'tasks#index'
+  namespace :api do
+    namespace :v1 do  
+		  resources :tasks, only: %i[index new create] do
+		    post :complete
+		  end
+		end
+	end
+  root to: 'api/v1/tasks#index'
 end
